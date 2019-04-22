@@ -1,0 +1,1129 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "calendeok api",
+    "description": "calendeok api documentation",
+    "version": "1.0.0"
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "paths": {
+    "/auth": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access": {
+                  "type": "string"
+                },
+                "refresh": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "subscriptionId": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "access": {
+                  "type": "string"
+                },
+                "refresh": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "409": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "bookmark": {
+                  "type": "number"
+                },
+                "createdAt": {
+                  "type": "number"
+                },
+                "updatedAt": {
+                  "type": "string"
+                },
+                "subscriptionId": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}": {
+      "put": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "email": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "bookmark": {
+                "type": "number"
+              },
+              "subscriptionId": {
+                "type": "number"
+              }
+            }
+          }
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "number"
+              }
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}/contents": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "bookmark": {
+                    "type": "number"
+                  },
+                  "report": {
+                    "type": "number"
+                  },
+                  "id": {
+                    "type": "number"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "categoryId": {
+                    "type": "number"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "number"
+                  },
+                  "subscriptionId": {
+                    "type": "number"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "userId": {
+                          "type": "number"
+                        },
+                        "contentId": {
+                          "type": "number"
+                        },
+                        "categoryId": {
+                          "type": "number"
+                        },
+                        "subscriptionId": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/users/{userId}/images": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "userId",
+          "in": "path",
+          "required": true
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "number"
+                  },
+                  "contentId": {
+                    "type": "number"
+                  },
+                  "categoryId": {
+                    "type": "number"
+                  },
+                  "subscriptionId": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/contents": {
+      "post": {
+        "tags": [
+          "Contents"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "categoryId": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "name": "image",
+          "in": "formData",
+          "type": "file"
+        }],
+        "responses": {
+          "201": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bookmark": {
+                  "type": "number"
+                },
+                "report": {
+                  "type": "number"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "categoryId": {
+                  "type": "string"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "number"
+                },
+                "subscriptionId": {
+                  "type": "number"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "userId": {
+                        "type": "number"
+                      },
+                      "contentId": {
+                        "type": "number"
+                      },
+                      "categoryId": {
+                        "type": "number"
+                      },
+                      "subscriptionId": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Contents"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": true,
+          "type": "number"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "title": {
+                    "type": "string"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "bookmark": {
+                    "type": "number"
+                  },
+                  "report": {
+                    "type": "number"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "deletedAt": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "number"
+                  },
+                  "categoryId": {
+                    "type": "number"
+                  },
+                  "subscriptionId": {
+                    "type": "number"
+                  },
+                  "images": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "number"
+                        },
+                        "key": {
+                          "type": "string"
+                        },
+                        "createdAt": {
+                          "type": "string"
+                        },
+                        "userId": {
+                          "type": "number"
+                        },
+                        "contentId": {
+                          "type": "number"
+                        },
+                        "categoryId": {
+                          "type": "number"
+                        },
+                        "subscriptionId": {
+                          "type": "number"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/contents/{contentId}": {
+      "get": {
+        "tags": [
+          "Contents"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "contentId",
+          "in": "path",
+          "required": true,
+          "type": "number"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "bookmark": {
+                  "type": "number"
+                },
+                "report": {
+                  "type": "number"
+                },
+                "id": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "categoryId": {
+                  "type": "number"
+                },
+                "createdAt": {
+                  "type": "string"
+                },
+                "userId": {
+                  "type": "number"
+                },
+                "subscriptionId": {
+                  "type": "number"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "userId": {
+                        "type": "number"
+                      },
+                      "contentId": {
+                        "type": "number"
+                      },
+                      "categoryId": {
+                        "type": "number"
+                      },
+                      "subscriptionId": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Contents"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "contentId",
+          "in": "path",
+          "required": true,
+          "type": "number"
+        },
+        {
+          "name": "body",
+          "in": "body",
+          "required": true,
+          "schema": {
+            "type": "object",
+            "properties": {
+              "title": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "categoryId": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        {
+          "name": "image",
+          "in": "formData",
+          "type": "file"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "text": {
+                  "type": "string"
+                },
+                "categoryId": {
+                  "type": "number"
+                },
+                "userId": {
+                  "type": "number"
+                },
+                "subscriptionId": {
+                  "type": "number"
+                },
+                "images": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "number"
+                      },
+                      "key": {
+                        "type": "string"
+                      },
+                      "createdAt": {
+                        "type": "string"
+                      },
+                      "userId": {
+                        "type": "number"
+                      },
+                      "contentId": {
+                        "type": "number"
+                      },
+                      "subscriptionId": {
+                        "type": "number"
+                      },
+                      "categoryId": {
+                        "type": "number"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Contents"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "contentId",
+          "in": "path",
+          "required": true,
+          "type": "number"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "404": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/images": {
+      "get": {
+        "tags": [
+          "Images"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "from",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "to",
+          "in": "query",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": true,
+          "type": "number"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "key": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "deletedAt": {
+                    "type": "string"
+                  },
+                  "userId": {
+                    "type": "string"
+                  },
+                  "contentId": {
+                    "type": "string"
+                  },
+                  "categoryId": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "schema": {
+              "type": "string"
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "/subscriptions": {
+      "get": {
+        "tags": [
+          "Subscriptions"
+        ],
+        "parameters": [{
+          "name": "Authorization",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "refresh",
+          "in": "header",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "lang",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "name",
+          "in": "query",
+          "required": true,
+          "type": "string"
+        }],
+        "responses": {
+          "200": {
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "ko": {
+                    "type": "string"
+                  },
+                  "en": {
+                    "type": "string"
+                  },
+                  "createdAt": {
+                    "type": "string"
+                  },
+                  "updatedAt": {
+                    "type": "string"
+                  },
+                  "deletedAt": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "schema": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
