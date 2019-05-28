@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "title": "calendeok api",
+    "title": "Calendeok api",
     "description": "calendeok api documentation",
     "version": "1.0.0"
   },
