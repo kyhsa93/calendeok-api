@@ -493,28 +493,24 @@
           "type": "string"
         },
         {
-          "name": "body",
-          "in": "body",
-          "required": true,
-          "schema": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "categoryId": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        {
           "name": "image",
           "in": "formData",
           "type": "file"
+        },
+        {
+          "name": "title",
+          "in": "formData",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "in": "formData",
+          "type": "string"
+        },
+        {
+          "name": "categoryId",
+          "in": "formData",
+          "type": "number"
         }],
         "responses": {
           "201": {
@@ -837,28 +833,24 @@
           "type": "number"
         },
         {
-          "name": "body",
-          "in": "body",
-          "required": true,
-          "schema": {
-            "type": "object",
-            "properties": {
-              "title": {
-                "type": "string"
-              },
-              "text": {
-                "type": "string"
-              },
-              "categoryId": {
-                "type": "number"
-              }
-            }
-          }
-        },
-        {
           "name": "image",
           "in": "formData",
           "type": "file"
+        },
+        {
+          "name": "title",
+          "in": "formData",
+          "type": "string"
+        },
+        {
+          "name": "text",
+          "in": "formData",
+          "type": "string"
+        },
+        {
+          "name": "categoryId",
+          "in": "formData",
+          "type": "number"
         }],
         "responses": {
           "200": {
