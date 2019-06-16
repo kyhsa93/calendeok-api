@@ -327,6 +327,11 @@
           "name": "userId",
           "in": "path",
           "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
+          "required": true
         }],
         "responses": {
           "200": {
@@ -433,6 +438,11 @@
         {
           "name": "userId",
           "in": "path",
+          "required": true
+        },
+        {
+          "name": "page",
+          "in": "query",
           "required": true
         }],
         "responses": {
